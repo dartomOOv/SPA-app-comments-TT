@@ -18,3 +18,6 @@ class CommentsModel(models.Model):
 
     def __str__(self):
         return f"{self.user.username} messaged: {self.text}"
+
+    def amount_of_responses(self):
+        return self.responses.count()
