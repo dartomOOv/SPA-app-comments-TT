@@ -26,3 +26,17 @@ class CommentsSerializer(serializers.ModelSerializer):
         comment = CommentsModel.objects.create(**validated_data, user=user)
 
         return comment
+
+
+class CommentRetrieveSerializer(CommentsSerializer):
+    responses = CommentsSerializer(many=True)
+
+    class Meta:
+        model = CommentsModel
+        fields = (
+            "id",
+            "user",
+            "home_page",
+            "text",
+            "responses"
+        )
