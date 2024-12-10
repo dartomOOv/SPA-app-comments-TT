@@ -7,7 +7,7 @@ class CommentsModel(models.Model):
     text = models.TextField()
     user = models.ForeignKey(DummyUserModel, on_delete=models.DO_NOTHING)
     home_page = models.URLField(null=True, blank=True)
-    response_to = models.OneToOneField("CommentsModel", on_delete=models.CASCADE, null=True, blank=True)
+    response_to = models.ForeignKey("CommentsModel", related_name="responses", on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
         constraints = (
